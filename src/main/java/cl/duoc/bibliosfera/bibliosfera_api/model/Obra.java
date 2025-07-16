@@ -21,11 +21,20 @@ public class Obra {
     private Integer anioPublicacionOriginal;
 
     // --- Relación Muchos a Muchos con Autor ---
-    @ManyToMany(fetch = FetchType.LAZY, cascade = { CascadeType.PERSIST, CascadeType.MERGE })
+    @ManyToMany(fetch = FetchType.LAZY, cascade = { CascadeType.MERGE })
     @JoinTable(
         name = "obra_autor", // Nombre de la tabla intermedia
         joinColumns = @JoinColumn(name = "obra_id"),
         inverseJoinColumns = @JoinColumn(name = "autor_id")
     )
     private Set<Autor> autores = new HashSet<>();
+
+    // --- Relación Muchos a Muchos con Categoria ---
+    @ManyToMany(fetch = FetchType.LAZY, cascade = { CascadeType.MERGE })
+    @JoinTable(
+        name = "obra_categoria", // Nombre de la tabla intermedia
+        joinColumns = @JoinColumn(name = "obra_id"),
+        inverseJoinColumns = @JoinColumn(name = "categoria_id")
+    )
+    private Set<Categoria> categorias = new HashSet<>();
 }

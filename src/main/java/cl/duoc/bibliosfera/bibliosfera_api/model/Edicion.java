@@ -16,8 +16,9 @@ public class Edicion {
     @Column(unique = true, nullable = false)
     private String isbn;
 
-    @Column(nullable = false)
-    private String editorial;
+    @ManyToOne(fetch = FetchType.LAZY)
+    @JoinColumn(name = "editorial_id", nullable = false)
+    private Editorial editorial;
 
     @Column(name = "fecha_publicacion")
     private LocalDate fechaPublicacion;

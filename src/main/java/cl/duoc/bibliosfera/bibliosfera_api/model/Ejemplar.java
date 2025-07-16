@@ -25,4 +25,8 @@ public class Ejemplar {
     @ManyToOne(fetch = FetchType.LAZY)
     @JoinColumn(name = "edicion_id", nullable = false)
     private Edicion edicion;
+
+    @ManyToOne(fetch = FetchType.LAZY)
+    @JoinColumn(name = "venta_id") // Será null hasta que se venda
+    private Venta venta;
 }
